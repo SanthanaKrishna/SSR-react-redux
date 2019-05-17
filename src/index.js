@@ -8,7 +8,7 @@ import { matchRoutes } from 'react-router-config';
 import renderer from './helpers/renderer';
 import createStore from './helpers/createStore';
 import Routes from './client/Routes';
-
+ 
 const app = express();
 
 app.use(express.static('public'));

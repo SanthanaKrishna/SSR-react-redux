@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import Home from './component/Home';
-import UsersList, { loadData } from './component/UserList';
+import HomePage from './pages/HomePage';
+import UsersListPage, { loadData } from './pages/UserListPage';
 
 /**
  * this formAt from jsx react router  
@@ -22,12 +22,12 @@ import UsersList, { loadData } from './component/UserList';
 export default [
     {
         path: '/',
-        component: Home,
+        component: HomePage,
         exact: true
     },
     {
         loadData,
         path: '/users',
-        component: UsersList
+        component: UsersListPage
     }
 ]
