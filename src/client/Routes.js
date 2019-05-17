@@ -1,8 +1,11 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import Home from './component/Home';
-import UsersList from './component/UserList';
+import UsersList, { loadData } from './component/UserList';
 
+/**
+ * this formAt from jsx react router  
+ */
 // export default () => {
 //     return (
 //         <div>
@@ -13,14 +16,18 @@ import UsersList from './component/UserList';
 //     )
 // }
 
-export default[
+/**
+ * this fromat is from react router config
+ */
+export default [
     {
-        path:'/',
-        component:Home,
-        exact:true
+        path: '/',
+        component: Home,
+        exact: true
     },
     {
-        path:'/users',
-        component:UsersList
+        loadData,
+        path: '/users',
+        component: UsersList
     }
 ]

@@ -16,10 +16,21 @@ app.use(express.static('public'));
 //app.get('/', (req, res)  use * instead of / to navigate several route i.e express not handle route as "/hi"
 app.get('*', (req, res) => {
     const store = createStore();
+
     //some logic to initialize and load into the store
-    matchRoutes(Routes,req.path);
-    res.send(renderer(req, store));
-});
+    /**
+     * matchRoutes
+     *  @params list of routes, path current component url i.e user attempt to view the component
+     * 
+     */
+    const promise=matchRoutes(Routes, req.path).map(({ route }) => {
+        return route.loadData ? route.loadData(store) : null;
+    });
+    Promise.all(promise).then(()=>{
+        res.send(renderer(req, store));
+    })
+    
+}); 
 
 app.listen(3000, () => {
     console.log('Listening on port 3000');
